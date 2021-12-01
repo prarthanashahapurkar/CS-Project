@@ -3,8 +3,8 @@ const app = express();
 
 app.get("/", function(req,res) {
 
-    console.log("Hello World!")
-    res.send("WORKING");
+    console.log("WORKING")
+    res.send("Great Success!!");
 });
 
 app.listen(process.env.PORT || 5000);
