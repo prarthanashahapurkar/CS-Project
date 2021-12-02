@@ -25,7 +25,7 @@ app.get("/", function (req, res) {
     console.log("location", geo);
     //console.log("hihaaa: ", geoip.pretty(geo));
 
-    let info = await ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
+    let info = ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
     console.log("info: ",info);
     // ipLocation(ip, function (err, data) {
     //     console.log("data: ",data);
