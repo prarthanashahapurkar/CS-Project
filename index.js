@@ -3,6 +3,7 @@ const app = express();
 const requestIp = require('request-ip');
 var geoip = require('geoip-lite');
 var ipLocation = require('ip-location')
+const ipfetch = require('ip-fetch');
 
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
@@ -24,9 +25,11 @@ app.get("/", function (req, res) {
     console.log("location", geo);
     //console.log("hihaaa: ", geoip.pretty(geo));
 
-    ipLocation(ip, function (err, data) {
-        console.log("data: ",data);
-    });
+    let info = await ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
+    console.log("info: ",info);
+    // ipLocation(ip, function (err, data) {
+    //     console.log("data: ",data);
+    // });
 });
 
 app.listen(process.env.PORT || 5000);
