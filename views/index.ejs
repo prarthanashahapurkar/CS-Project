@@ -26,55 +26,8 @@
 			// Setting text of element P with id gfg
 			$("#ip_addr").html(data.ip);
 
-			function success(position) {
-				var latitude = position.coords.latitude;
-				var longitude = position.coords.longitude;
-				console.log(latitude, longitude);
-			}
-
-			success(data.ip);
-		})
-
-
-		function getloc()
-        {
-            
-            if(navigator.geolocation)
-            {
-                navigator.geolocation.getCurrentPosition(showposition);
-    
-    
-            }
-            else{
-                x.innerHTML="not supported";
-            }
-        }
-
-		// function showposition(position)
-        // {
-        //     x.value=position.coords.latitude;
-        //     y.value=position.coords.longitude;
-    
-    
-        //     //x.innerHTML="<h1>lat: </h1>"+position.coords.latitude;
-        //     //x.innerHTML+="<h1>lon: </h1>"+position.coords.longitude;
-        //     //x.innerHTML+='<input type="text" name="loc" id="loc" value="hie">';
-    
-        // }
-
-		// //function geoFindMe() {
-		
-			function showposition(position) {
-				var latitude = position.coords.latitude;
-				var longitude = position.coords.longitude;
-				console.log(latitude, longitude);
-			}
-
-			//success(data.ip);
-			//navigator.geolocation.getCurrentPosition(success, error);
-		//}
-
-
+			console.log("ip: ",data.ip);
+		});
 
 	</script>
 </head>

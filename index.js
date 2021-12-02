@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const requestIp = require('request-ip');
+var geoip = require('geoip-lite');
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.use( express.static( "./views" ) );
@@ -14,9 +15,11 @@ app.get("/", function(req,res) {
     //res.send("Great Success!!");
     const ip = requestIp.getClientIp(req); 
     arr.push(ip);
+    var geo = geoip.lookup(ip);
     console.log("ip: ",ip);
     res.render("index");
     console.log(arr);
+    console.log("lat-long: ", geo);
 });
 
 app.listen(process.env.PORT || 5000);
