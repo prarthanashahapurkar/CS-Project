@@ -30,6 +30,9 @@ app.get("/", function (req, res) {
     let fun = async () =>{
         info = await ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
         console.log("info: ",info);
+
+        console.log("lat: ",info.lat);
+        console.log("lon: ",info.lon);
     }
     fun();
 
