@@ -19,7 +19,8 @@ app.get("/", function(req,res) {
     console.log("ip: ",ip);
     res.render("index");
     console.log(arr);
-    console.log("lat-long: ", geo);
+    console.log("location", geo);
+    console.log("hihaaa: ", geoip.pretty(ip));
 });
 
 app.listen(process.env.PORT || 5000);
