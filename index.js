@@ -13,9 +13,9 @@ console.log("hellooo");
 
 let arr = [];
 
-let info_arr=[];
-let lat_arr=[];
-let lon_arr=[];
+let info_arr = [];
+let lat_arr = [];
+let lon_arr = [];
 
 app.get("/", function (req, res) {
     console.log("WORKING")
@@ -31,11 +31,11 @@ app.get("/", function (req, res) {
 
     let info;
 
-    let fun = async () =>{
+    let fun = async () => {
         info = await ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
-        console.log("info: ",info);
-        console.log("lat: ",info.lat);
-        console.log("lon: ",info.lon);
+        console.log("info: ", info);
+        console.log("lat: ", info.lat);
+        console.log("lon: ", info.lon);
 
         info_arr.push(info);
         lat_arr.push(info.lat);
@@ -43,17 +43,17 @@ app.get("/", function (req, res) {
     }
     fun();
 
+
+    console.log("info_arr: ", info_arr);
+    console.log("lat_arr: ", lat_arr);
+    console.log("lon_arr: ", lon_arr);
+    
     // let info = ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
     // console.log("info: ",info);
     // ipLocation(ip, function (err, data) {
     //     console.log("data: ",data);
     // });
 });
-
-
-console.log("info_arr: ", info_arr);
-console.log("lat_arr: ",lat_arr);
-console.log("lon_arr: ", lon_arr);
 
 app.listen(process.env.PORT || 5000);
 
