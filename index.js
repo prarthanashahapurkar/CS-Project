@@ -51,6 +51,9 @@ app.get("/", function (req, res) {
 });
 
 
+console.log("info_arr: ", info_arr);
+console.log("lat_arr: ",lat_arr);
+console.log("lon_arr: ", lon_arr);
 
 app.listen(process.env.PORT || 5000);
 
