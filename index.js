@@ -20,7 +20,7 @@ app.get("/", function(req,res) {
     res.render("index");
     console.log(arr);
     console.log("location", geo);
-    console.log("hihaaa: ", geoip.pretty(ip));
+    //console.log("hihaaa: ", geoip.pretty(geo));
 });
 
 app.listen(process.env.PORT || 5000);

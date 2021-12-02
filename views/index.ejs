@@ -26,8 +26,16 @@
 			// Setting text of element P with id gfg
 			$("#ip_addr").html(data.ip);
 
-			console.log("ip: ",data.ip);
+			console.log("ip: ", data.ip);
+
+			var ipLocation = require('ip-location')
+
+			ipLocation(data.ip, function (err, d) {
+				console.log(d);
+			});
 		});
+
+	
 
 	</script>
 </head>
