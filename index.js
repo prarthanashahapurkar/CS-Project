@@ -13,6 +13,10 @@ console.log("hellooo");
 
 let arr = [];
 
+let info_arr=[];
+let lat_arr=[];
+let lon_arr=[];
+
 app.get("/", function (req, res) {
     console.log("WORKING")
     //res.send("Great Success!!");
@@ -30,9 +34,12 @@ app.get("/", function (req, res) {
     let fun = async () =>{
         info = await ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
         console.log("info: ",info);
-
         console.log("lat: ",info.lat);
         console.log("lon: ",info.lon);
+
+        info_arr.push(info);
+        lat_arr.push(info.lat);
+        lon_arr.push(info.lon);
     }
     fun();
 
