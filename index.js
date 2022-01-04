@@ -41,9 +41,7 @@ app.get("/map",function(req,res){
     }
     res.render("map",{cdata:c});
 });
-
 app.listen(process.env.PORT || 5000);
-
 
 //###########################
 
