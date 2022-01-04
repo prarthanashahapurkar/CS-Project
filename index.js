@@ -45,10 +45,10 @@ app.listen(process.env.PORT || 5000);
 
 //###########################
 
-//git add .
-//git commit -am "add start"
-//git push -u origin master
+/* git add .
+git commit -am "add start"
+git push -u origin master */
 
 //###########################
 
-//heroku --tail --app cs-project-ps
+//heroku logs -t --app cs-project-ps
