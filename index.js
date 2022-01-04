@@ -1,58 +1,45 @@
-const express = require("express");
-const app = express();
-const requestIp = require('request-ip');
-var geoip = require('geoip-lite');
-var ipLocation = require('ip-location')
+const express= require("express");
+const RequestIp = require('@supercharge/request-ip');
+const app= express()
 const ipfetch = require('ip-fetch');
+let info;
+let geoarr=[]
 
+
+let larr = []
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
-app.use(express.static("./views"));
+app.use( express.static( "./views" ) );
 
-console.log("hellooo");
-
-let arr = [];
-
-let info_arr = [];
-let lat_arr = [];
-let lon_arr = [];
-
-app.get("/", function (req, res) {
-    console.log("WORKING")
-    //res.send("Great Success!!");
-    const ip = requestIp.getClientIp(req);
-    arr.push(ip);
-    var geo = geoip.lookup(ip);
-    console.log("ip: ", ip);
-    res.render("index");
-    console.log(arr);
-    console.log("location", geo);
-    //console.log("hihaaa: ", geoip.pretty(geo));
-
-    let info;
-
-    let fun = async () => {
-        info = await ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
-        console.log("info: ", info);
-        console.log("lat: ", info.lat);
-        console.log("lon: ", info.lon);
-
-        info_arr.push(info);
-        lat_arr.push(info.lat);
-        lon_arr.push(info.lon);
+app.get("/",function(req,res){
+    
+    var geoip = require('geoip-lite');
+    console.log("double working");
+    var ip = RequestIp.getClientIp(req);
+    
+    let fun = async () =>{
+        info = await ipfetch.getLocationNpm(ip); 
+        console.log(info);
+        geoarr.push(info);
     }
     fun();
-
-
-    console.log("info_arr: ", info_arr);
-    console.log("lat_arr: ", lat_arr);
-    console.log("lon_arr: ", lon_arr);
+    larr.push(ip);
     
-    // let info = ipfetch.getLocationNpm(ip); // example => info = await ipfetch.getLocationNpm('1.1.1.1');
-    // console.log("info: ",info);
-    // ipLocation(ip, function (err, data) {
-    //     console.log("data: ",data);
-    // });
+    
+    console.log("YOur IP: ",larr);
+    // console.log(geo);
+    console.log("geo array:",geoarr);
+    res.render("index");
+});
+app.get("/map",function(req,res){
+    
+    var c={lat:38.913188059745586,lon:-77.03238901390978};
+
+    if(geoarr.length>0)
+    {
+        c={lat:geoarr[geoarr.length-1].lat,lon:geoarr[geoarr.length-1].lon}
+    }
+    res.render("map",{cdata:c});
 });
 
 app.listen(process.env.PORT || 5000);
@@ -65,3 +52,5 @@ app.listen(process.env.PORT || 5000);
 //git push -u origin master
 
 //###########################
+
+//heroku --tail --app cs-project-ps
