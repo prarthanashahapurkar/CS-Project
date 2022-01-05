@@ -41,7 +41,7 @@ app.get("/map",function(req,res){
         c={lat:geoarr[geoarr.length-1].lat,lon:geoarr[geoarr.length-1].lon}
     }
 
-    console.log(distance(19.46,72.8097, geoarr[geoarr.length-1].lat, geoarr[geoarr.length-1].lon, "K"));
+    console.log("Distance: ",distance(19.46,72.8097, geoarr[geoarr.length-1].lat, geoarr[geoarr.length-1].lon, "K"));
 
     res.render("map",{cdata:c});
 });
@@ -79,7 +79,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	}
 }
 
-console.log((distance(19.270941,72.968102,19.46,72.8097,"K")))
+// console.log("Distance: ",(distance(19.270941,72.968102,19.46,72.8097,"K")))
 
 app.listen(process.env.PORT || 5000);
 
