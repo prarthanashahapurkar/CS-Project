@@ -38,10 +38,12 @@ app.get("/map",function(req,res){
 
     if(geoarr.length>0)
     {
-        c={lat:geoarr[geoarr.length-1].lat,lon:geoarr[geoarr.length-1].lon}
+        c={lat:geoarr[geoarr.length-1].lat,lon:geoarr[geoarr.length-1].lon};
+        console.log("Distance: ",distance(19.46,72.8097, geoarr[geoarr.length-1].lat, geoarr[geoarr.length-1].lon, "K"));
+
     }
 
-    console.log("Distance: ",distance(19.46,72.8097, geoarr[geoarr.length-1].lat, geoarr[geoarr.length-1].lon, "K"));
+    //console.log("Distance: ",distance(19.46,72.8097, geoarr[geoarr.length-1].lat, geoarr[geoarr.length-1].lon, "K"));
 
     res.render("map",{cdata:c});
 });
