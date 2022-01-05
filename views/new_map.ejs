@@ -1,0 +1,99 @@
+<html><head>
+  <meta charset="utf-8">
+  <title>Display navigation directions</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+  <style>
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  </style>
+  </head>
+  <body>
+    <h1>Hello</h1>
+  <script src="mapbox-gl-directions.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
+  <div id="map" class="mapboxgl-map"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" role="region" width="413" height="657" style="width: 413px; height: 657px;"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"><div class="mapboxgl-ctrl-directions mapboxgl-ctrl"><div class="directions-control directions-control-inputs"><div class="mapbox-directions-component mapbox-directions-inputs">
+    <div class="mapbox-directions-component-keyline">
+      <div class="mapbox-directions-origin">
+        <label class="mapbox-form-label">
+          <span class="directions-icon directions-icon-depart"></span>
+        </label>
+        <div id="mapbox-directions-origin-input">
+          <div class="mapboxgl-ctrl-geocoder">
+            <span class="geocoder-icon geocoder-icon-search"></span>
+            <input type="text" id="ip1" placeholder="Workinggggg" value=" 72.8097,19.46"><ul class="suggestions" style="display: none;"></ul><div class="geocoder-pin-right"><button class="geocoder-icon geocoder-icon-close"></button><span class="geocoder-icon geocoder-icon-loading"></span></div></div></div>
+      </div>
+  
+      <button class="directions-icon directions-icon-reverse directions-reverse js-reverse-inputs" title="Reverse origin &amp; destination">
+      </button>
+  
+      <div class="mapbox-directions-destination">
+        <label class="mapbox-form-label">
+          <span class="directions-icon directions-icon-arrive"></span>
+        </label>
+        <div id="mapbox-directions-destination-input">
+          <div class="mapboxgl-ctrl-geocoder"><span class="geocoder-icon geocoder-icon-search"></span>
+            <input type="text" placeholder="Choose destination"><ul class="suggestions" style="display: none;"></ul><div class="geocoder-pin-right"><button class="geocoder-icon geocoder-icon-close"></button><span class="geocoder-icon geocoder-icon-loading"></span></div></div></div>
+      </div>
+    </div>
+  
+    
+    <div class="mapbox-directions-profile mapbox-directions-component-keyline mapbox-directions-clearfix"><input id="mapbox-directions-profile-driving-traffic" type="radio" name="profile" value="mapbox/driving-traffic" checked="">
+      <label for="mapbox-directions-profile-driving-traffic">Traffic</label>
+      <input id="mapbox-directions-profile-driving" type="radio" name="profile" value="mapbox/driving">
+      <label for="mapbox-directions-profile-driving">Driving</label>
+      <input id="mapbox-directions-profile-walking" type="radio" name="profile" value="mapbox/walking">
+      <label for="mapbox-directions-profile-walking">Walking</label>
+      <input id="mapbox-directions-profile-cycling" type="radio" name="profile" value="mapbox/cycling">
+      <label for="mapbox-directions-profile-cycling">Cycling</label>
+    </div>
+    
+  </div>
+  </div><div class="directions-control directions-control-instructions"></div></div></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: block;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox logo"></a></div></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact"><button class="mapboxgl-ctrl-attrib-button" type="button" aria-label="Toggle attribution"><span class="mapboxgl-ctrl-icon" aria-hidden="true" title="Toggle attribution"></span></button><div class="mapboxgl-ctrl-attrib-inner" role="list"><a href="https://www.mapbox.com/about/maps/" target="_blank" title="Mapbox" aria-label="Mapbox" role="listitem">© Mapbox</a> <a href="https://www.openstreetmap.org/about/" target="_blank" title="OpenStreetMap" aria-label="OpenStreetMap" role="listitem">© OpenStreetMap</a> <a class="mapbox-improve-map" href="https://apps.mapbox.com/feedback/?owner=mapbox&amp;id=streets-v11&amp;access_token=pk.eyJ1Ijoic2Fsdmlua2FqYXIiLCJhIjoiY2tneGFxOW12MDF3YzMwcXY4MDUyejRxNiJ9.D8ztzrAlqEXiNzdTukE9tw" target="_blank" title="Improve this map" aria-label="Map feedback" role="listitem" rel="noopener nofollow">Improve this map</a></div></div></div></div></div>
+  
+  <script>
+    // TO MAKE THE MAP APPEAR YOU MUST
+    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+
+    // console.log("Hello");
+
+    // var in1 = document.getElementById("ip1");
+    // in1.value =  "72.8097,19.46";
+
+    // console.log(in1);
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fsdmlua2FqYXIiLCJhIjoiY2tneGFxOW12MDF3YzMwcXY4MDUyejRxNiJ9.D8ztzrAlqEXiNzdTukE9tw';
+      const map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: [-79.4512, 43.6568],
+          zoom: 13
+      });
+  
+      map.addControl(
+          new MapboxDirections({
+              accessToken: mapboxgl.accessToken
+          }),
+          'top-left'
+      );
+
+//       console.log("Hello");
+
+//       var in1 = document.getElementById("ip1");
+// in1.value =  "72.8097,19.46";
+
+// console.log(in1);
+  </script>
+  
+  <script>
+     console.log("Hello");
+
+// var in1 = document.getElementById("ip1");
+// in1.value =  "72.8097,19.46";
+
+console.log(in1);
+  </script>
+  
+  </body></html>

@@ -31,6 +31,7 @@ app.get("/",function(req,res){
     console.log("geo array:",geoarr);
     res.render("index");
 });
+
 app.get("/map",function(req,res){
     
     var c={lat:38.913188059745586,lon:-77.03238901390978};
@@ -41,6 +42,18 @@ app.get("/map",function(req,res){
     }
     res.render("map",{cdata:c});
 });
+
+app.get("/new_map",function(req,res){
+    
+    // var c={lat:38.913188059745586,lon:-77.03238901390978};
+
+    // if(geoarr.length>0)
+    // {
+    //     c={lat:geoarr[geoarr.length-1].lat,lon:geoarr[geoarr.length-1].lon}
+    // }
+    res.render("new_map");
+});
+
 app.listen(process.env.PORT || 5000);
 
 //###########################
